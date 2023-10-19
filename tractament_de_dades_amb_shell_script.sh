@@ -42,5 +42,9 @@ while [ "$opcion" != 'q' ]; do
 				echo "$codi_e"
 			fi
 			;;
+		le)
+			cut -d',' -f4,5,8 cities.csv > paises.csv
+			grep "$pais" paises.csv | cut -d',' -f1,2 | uniq
+			;;
 	
  
