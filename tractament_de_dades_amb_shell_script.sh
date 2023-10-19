@@ -49,5 +49,8 @@ while [ "$opcion" != 'q' ]; do
 		lcp)
 			awk -F ',' -v pais="$pais" '$8 != pais {next} {print $2, $11}' cities.csv
 			;;
+		ecp)
+			awk -F ',' -v pais="$pais" '$8 != pais {next} {print $2, $11}' cities.csv > $codi_p.csv
+			;;
 	
  
