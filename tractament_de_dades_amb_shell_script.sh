@@ -57,5 +57,12 @@ while [ "$opcion" != 'q' ]; do
 			awk -F ',' '{print $2, $5, $11}' cities.csv > 1lce.csv
 			cut -d' ' -f1,3 1lce.csv > lce.csv
 			;;
+		gwd)
+			echo "Introduce el nombre de una población:"
+			read poblacio
+			nom_arxiu="$(awk -F ',' -v poblacio="$poblacio" '$2 != poblacio {next} {print $11}' cities.csv)"
+			url="https://www.wikidata.org/wiki/SPECIAL:EntityData/$nom_arxiu.json"
+			wget -0 "$nom_arxiu.json" "https://www.wikidata.org/wiki/SPECIAL:EntityData/$nom_arxiu.json"
+			;;			
 	
  
