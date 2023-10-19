@@ -28,5 +28,19 @@ while [ "$opcion" != 'q' ]; do
 				echo "$codi_p"
 			fi
 			;;
+		se)
+			echo "Introduce el nombre de un estado:"
+			read estado
+			if grep -q "$estado" cities.csv; then
+				cut -d',' -f4,5 cities.csv > estados.csv
+				codi_e="$(grep "$estado" estados.csv | cut -d',' -f1 | uniq)"
+				echo "$codi_e"
+			elif [ -z "$estado" ]; then
+				echo "$codi_p"
+			else
+				codi_e='XX'
+				echo "$codi_e"
+			fi
+			;;
 	
  
