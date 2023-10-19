@@ -46,5 +46,8 @@ while [ "$opcion" != 'q' ]; do
 			cut -d',' -f4,5,8 cities.csv > paises.csv
 			grep "$pais" paises.csv | cut -d',' -f1,2 | uniq
 			;;
+		lcp)
+			awk -F ',' -v pais="$pais" '$8 != pais {next} {print $2, $11}' cities.csv
+			;;
 	
  
