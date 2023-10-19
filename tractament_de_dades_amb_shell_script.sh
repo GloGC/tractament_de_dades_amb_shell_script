@@ -63,6 +63,28 @@ while [ "$opcion" != 'q' ]; do
 			nom_arxiu="$(awk -F ',' -v poblacio="$poblacio" '$2 != poblacio {next} {print $11}' cities.csv)"
 			url="https://www.wikidata.org/wiki/SPECIAL:EntityData/$nom_arxiu.json"
 			wget -0 "$nom_arxiu.json" "https://www.wikidata.org/wiki/SPECIAL:EntityData/$nom_arxiu.json"
-			;;			
+			;;
+		est)
+			awk -F ',' '{
+				countN += ( $9 > 0.0 )
+				countS += ( $9 < 0.0 )
+				countE += ( $10 > 0.0 )
+				countO += ( $10 < 0.0 )
+				countU += ( $9 == 0 ) && ( $10 == 0 )
+				countW += ( $11 == "" )
+			}
+			END {
+				printf "Nord %d Sud %d Est %d Oest %d No ubic %d No WDId %d\n", countN, countS, countE, countO, countU, countW
+			}' cities.csv
+			;;
+		*)
+			echo "Opción no reconocida"
+			;;
+	esac
+	echo "Introduce una opción"
+done
+echo "Saliendo de la aplicación"
+exit
+						
 	
  
