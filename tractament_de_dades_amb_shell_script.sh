@@ -11,4 +11,8 @@ while [ "$opcion" != 'q' ]; do
 			echo "Saliendo de la aplicación"
 			exit
 			;;
+		lp)
+			cut -d',' -f7,8 cities.csv | column -s',' -t | uniq | head -3
+			;;
+	
  
