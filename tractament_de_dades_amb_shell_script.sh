@@ -58,10 +58,10 @@ while [ "$opcion" != 'q' ]; do
 			awk -F ',' -v pais="$pais" '$8 != pais {next} {print $2, $11}' cities.csv > $codi_p.csv
 			;;
 		lce)
-			awk -F ',' -v pais="$pais" '$8 != pais {next} {print $2, $11}' cities.csv
-			awk -F ',' '{print $2, $5, $11}' cities.csv > 1lce.csv
-			cut -d' ' -f1,3 1lce.csv > lce.csv
-			;;
+			awk -F ',' -v pais="$pais" '$8 != pais {next} {print $2, $5, $11}' cities.csv > poble_estat_wiki_del_pais.csv
+                        awk -F ' ' -v estat="$estado" '$2 != estat {next} {print $1, $3}' poble_estat_wiki_del_pais.csv
+                        awk -F ' ' -v estat="$estado" '$2 != estat {next} {print $1, $3}' poble_estat_wiki_del_pais.csv > "$codi_p"_"$codi_e".csv
+                        ;;
 		gwd)
 			echo "Introdueix el nom d'una població:"
 			read poblacio
