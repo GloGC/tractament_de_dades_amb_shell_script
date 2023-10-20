@@ -1,5 +1,4 @@
 #!/bin/bash
-CADENA='(("\w+( \w+)")|\w+)'
 opcion='x'
 codi_p='xx'
 codi_e='xxx'
