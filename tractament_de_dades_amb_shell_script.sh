@@ -3,6 +3,12 @@ CADENA='(("\w+( \w+)")|\w+)'
 opcion='x'
 codi_p='xx'
 codi_e='xxx'
+countU=0
+countW=0
+countN=0
+countS=0
+countE=0
+countO=0
 echo "Introduce una opción:"
 while [ "$opcion" != 'q' ]; do
 	read opcion
@@ -58,7 +64,7 @@ while [ "$opcion" != 'q' ]; do
 			cut -d' ' -f1,3 1lce.csv > lce.csv
 			;;
 		gwd)
-			echo "Introduce el nombre de una población:"
+			echo "Introdueix el nom d'una població:"
 			read poblacio
 			nom_arxiu="$(awk -F ',' -v poblacio="$poblacio" '$2 != poblacio {next} {print $11}' cities.csv)"
 			url="https://www.wikidata.org/wiki/SPECIAL:EntityData/$nom_arxiu.json"
